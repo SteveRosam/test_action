@@ -1,15 +1,14 @@
 import os
-import requests  # noqa We are just importing this to prove the dependency installed correctly
 
 messages = []
 
 def send_log():
     env_file = os.getenv('GITHUB_ENV')
-
+    env_file = "./foo.txt"
     message = "\n".join(messages)
 
     with open(env_file, "a") as myfile:
-        myfile.write(f"MY_VAR={message}")
+        myfile.write(f"{message}")
 
 def log_message(message):
     messages.append(message)
@@ -17,11 +16,11 @@ def log_message(message):
 
 def main():
     try:
-        log_message("foo")
-        log_message("bar")
-        log_message("baz")
+        log_message("\nMY_VAR=foo")
+        log_message("\nMY_VAR=bar")
+        log_message("\nMY_VAR=baz")
     except Exception as e:
-        log_message("Error")
+        log_message("\nMY_VAR=Error")
     finally:
         send_log()
 
