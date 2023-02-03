@@ -4,7 +4,7 @@ messages = []
 
 def send_log():
     env_file = os.getenv('GITHUB_ENV')
-    env_file = "./foo.txt"
+    #env_file = "./foo.txt"
     message = "\n".join(messages)
 
     with open(env_file, "a") as myfile:
