@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 messages = []
 
@@ -15,12 +16,19 @@ def log_message(message):
 
 
 def main():
+
     try:
-        log_message("\nMY_VAR=foo")
-        log_message("\nMY_VAR=bar")
-        log_message("\nMY_VAR=baz")
+        files = []
+        for p in Path("./").iterdir():
+            files.append(p.name)
+        all_files = "\n".join(files)
+        log_message(f"FILES_LISTING_1={all_files}")
+
+        log_message("MY_VAR1=foo")
+        log_message("MY_VAR2=bar")
+        log_message("MY_VAR3=baz")
     except Exception as e:
-        log_message("\nMY_VAR=Error")
+        log_message("ERROR=Error")
     finally:
         send_log()
 
