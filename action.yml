@@ -6,8 +6,16 @@ inputs:
     description: "Input to use"
     default: "world"
 outputs:
-  myOutput:
+  files:
+    description: the files
+  FILES_LISTING_1:
     description: "Output from the action"
+  MY_VAR1:
+    description: "1"
+  MY_VAR2:
+    description: "2"
+  MY_VAR3:
+    description: "3"
 runs:
   using: "docker"
   image: "Dockerfile"
