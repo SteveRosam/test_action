@@ -7,7 +7,8 @@ def main():
 
     my_output = f"Hello {my_input}"
 
-    print(f"::set-output name=myOutput::{my_output}")
+    with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
+        print(f'FOO=BAR', file=fh)
 
 
 if __name__ == "__main__":
