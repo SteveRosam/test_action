@@ -39,7 +39,14 @@ def main():
 
         xx = ",".join(fs)
         set_action_output("files", xx)
-        print(xx)
+        set_action_output("the_files", files)
+
+        x = []
+        x.append("a")     
+        x.append("b")     
+        x.append("c")     
+        set_action_output("x", x)
+
 
     except Exception as e:
         log_message("ERROR=Error")
