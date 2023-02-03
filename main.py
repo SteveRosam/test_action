@@ -21,7 +21,7 @@ def main():
         files = []
         for p in Path("./").iterdir():
             #files.append(p.name)
-            log_message(f"{p.name}")
+            log_message(f"{p.name}=OMG")
 
         #all_files = ",".join(files)
         #log_message(f"FILES_LISTING_1={all_files}")
