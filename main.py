@@ -3,12 +3,10 @@ import requests  # noqa We are just importing this to prove the dependency insta
 
 
 def main():
-    my_input = os.environ["INPUT_MYINPUT"]
+    env_file = os.getenv('GITHUB_ENV')
 
-    my_output = f"Hello {my_input}"
-
-    with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
-        print(f'FOO=BAR', file=fh)
+    with open(env_file, "a") as myfile:
+        myfile.write("MY_VAR=MY_VALUE")
 
 
 if __name__ == "__main__":
