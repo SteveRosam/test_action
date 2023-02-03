@@ -3,6 +3,10 @@ from pathlib import Path
 
 messages = []
 
+def set_action_output(name: str, value: str):
+    with open(os.environ["GITHUB_OUTPUT"], "a") as myfile:
+        myfile.write(f"{name}={value}\n")
+
 def send_log():
     env_file = os.getenv('GITHUB_ENV')
     #env_file = "./foo.txt"
@@ -19,7 +23,7 @@ def main():
 
     try:
         files = []
-        for p in Path("./").iterdir():
+        for p in Path("").iterdir():
             files.append(p.name)
         all_files = ",".join(files)
         log_message(f"FILES_LISTING_1='{all_files}'")
@@ -27,6 +31,16 @@ def main():
         log_message("MY_VAR1=foo")
         log_message("MY_VAR2=bar")
         log_message("MY_VAR3=baz")
+
+        fs = []
+        for root, dirs, files in os.walk(""):
+            for file in files:
+                fs.append(str(file))
+
+        xx = ",".join(fs)
+        set_action_output("files", xx)
+        print(xx)
+
     except Exception as e:
         log_message("ERROR=Error")
     finally:
